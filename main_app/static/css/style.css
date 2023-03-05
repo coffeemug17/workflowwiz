@@ -1,0 +1,34 @@
+body {
+    background: radial-gradient(circle at 0.7% 1%, rgb(160, 192, 214) 0%, rgb(67, 89, 125) 100.2%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#navbar {
+    background-color: rgba(229, 250, 251, 0.7);
+    padding-left: 2vmin;
+    padding-right: 2vmin;
+    margin-left: 2vmin;
+    margin-right: 2vmin;
+    margin-top: 2vmin;
+    border-radius: 15px;
+}
+
+.navlink {
+    text-decoration: none;
+}
+
+#logo {
+    margin-left: 2px;
+    margin-bottom: -10px;
+}
+
+h3 {
+    font-family: 'Poiret One', cursive;
+    font-size: 30px;
+}
+
+/* accent colors 
+222, 116, 86 - orange
+43, 50, 64 - dark navy 
+*/
