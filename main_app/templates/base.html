@@ -23,7 +23,7 @@
                 <a class="navlink" href="{% url 'home' %}">Home</a>
                 {% if user.is_authenticated %}
                     <a class="navlink" href="">Create Project</a>
-                    <a class="navlink" href="">My Projects</a>
+                    <a class="navlink" href="{% url 'index' %}">My Projects</a>
                     <a class="navlink" href="{% url 'logout' %}">Log Out</a>
                 {% else %}
                     <a class="navlink" href="{% url 'signup' %}">Sign Up</a>
