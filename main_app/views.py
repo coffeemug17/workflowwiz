@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Project
+from .models import Project, Task
 
 # Create your views here.
 class ProjectCreate(LoginRequiredMixin, CreateView):
@@ -27,6 +27,11 @@ class ProjectDelete(LoginRequiredMixin, DeleteView):
   success_url = '/projects'
 
 
+class TaskCreate(LoginRequiredMixin, CreateView):
+  model = Task
+  fields = '__all__'
+
+
 def home(request):
     return render(request, 'home.html')
 
@@ -37,10 +42,13 @@ def projects_index(request):
     'projects': projects
   })
 
+@login_required
 def projects_detail(request, project_id):
   project = Project.objects.get(id=project_id)
+  tasks = project.task_set.all()
   return render(request, 'projects/detail.html', {
-    'project': project
+    'project': project,
+    'tasks' : tasks
   })
 
 

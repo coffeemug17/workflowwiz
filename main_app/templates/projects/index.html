@@ -3,11 +3,14 @@
 
 <h1>My Projects</h1>
 {% for project in projects %}
-
-<div>
-    <span>Title: {{ project.title }}</span>
-    <p>Description: {{ project.description }}</p>
-</div>
+<a href="{% url 'detail' project.id %}">
+    
+    <div>
+        <span>Title: {{ project.title }}</span>
+        <p>Description: {{ project.description }}</p>
+        
+    </div>
+</a>
 
 
 {% empty %}
