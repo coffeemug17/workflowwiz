@@ -1,10 +1,20 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Project
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
+
+@login_required
+def projects_index(request):
+  projects = Project.objects.filter(user=request.user)
+  return render(request, 'projects/index.html', {
+    'projects': projects
+  })
 
 def signup(request):
   error_message = ''
@@ -17,7 +27,7 @@ def signup(request):
       user = form.save()
       # This is how we log a user in via code
       login(request, user)
-      return redirect('')
+      return redirect('index')
     else:
       error_message = 'Invalid sign up - try again'
   # A bad POST or a GET request, so render signup.html with an empty form
