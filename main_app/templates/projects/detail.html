@@ -21,7 +21,20 @@
       </div>
     </div>
   </div>
-
+  <div class="col s6">
+    <form action="{% url 'task_create' project.id %}" method="POST">
+      {% csrf_token %}
+      <!-- Render the inputs -->
+      <input type="submit" class="btn" value="Add Task">
+    </form>
+    <br>
+    {% for task in project.task_set.all %}
+        <div>{{ task.title }}</div>
+        <div>{{ task.description }}</div>
+    {% empty %}
+      <div class="card-panel teal-text center-align">No Tasks Yet</div>
+    {% endfor %}
+  </div>
 
 
 {% endblock %}
