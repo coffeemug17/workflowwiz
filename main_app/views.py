@@ -17,6 +17,15 @@ class ProjectCreate(LoginRequiredMixin, CreateView):
     form.instance.user = self.request.user
     return super().form_valid(form)
 
+class ProjectUpdate(LoginRequiredMixin, UpdateView):
+  model = Project
+  fields = '__all__'
+
+
+class ProjectDelete(LoginRequiredMixin, DeleteView):
+  model = Project
+  success_url = '/projects'
+
 
 def home(request):
     return render(request, 'home.html')
@@ -27,6 +36,14 @@ def projects_index(request):
   return render(request, 'projects/index.html', {
     'projects': projects
   })
+
+def projects_detail(request, project_id):
+  project = Project.objects.get(id=project_id)
+  return render(request, 'projects/detail.html', {
+    'project': project
+  })
+
+
 
 def signup(request):
   error_message = ''

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Project Details</h1>
+
+<div class="row">
+  <div class="col s6">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ project.title }}</span>
+        <p>Description: {{ project.description|linebreaks }}</p>
+        {% if project.completion %}
+        <p>Completed</p>
+        {% else %}
+          <p>In Progress</p>
+        {% endif %}
+      </div>
+      <div class="card-action">
+        <a href="{% url 'projects_update' project.id %}">Edit</a>
+        <a href="{% url 'projects_delete' project.id %}">Delete</a>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}
