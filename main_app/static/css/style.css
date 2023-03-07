@@ -20,15 +20,39 @@ body {
 
 #logo {
     margin-left: 2px;
-    margin-bottom: -10px;
+    margin-bottom: -7px;
 }
 
-h3 {
+.ww {
     font-family: 'Poiret One', cursive;
     font-size: 30px;
 }
 
+main {
+    font-family: 'Comfortaa', cursive;
+}
+
+#project-container {
+    background-color: #293241;
+    border-radius: 1vmin;
+}
+
+.card {
+    background-color: rgba(229, 250, 251, 0.7);
+}
+
+#project-index {
+    background-color: #293241;
+    border-radius: 1vmin;
+}
+
+.btn {
+    background-color: #ee6c4d;
+    border: none;
+}
+
+
 /* accent colors 
-222, 116, 86 - orange
-43, 50, 64 - dark navy 
+#ee6c4d orange
+#293241 navy
 */
