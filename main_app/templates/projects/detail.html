@@ -22,7 +22,7 @@
     </div>
   </div>
   <div class="col s6">
-    <form action="{% url 'task_create' project.id %}" method="POST">
+    <form action="{% url 'tasks_create' project.id %}" method="POST">
       {% csrf_token %}
       <!-- Render the inputs -->
       <input type="submit" class="btn" value="Add Task">

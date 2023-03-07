@@ -29,8 +29,21 @@ class ProjectDelete(LoginRequiredMixin, DeleteView):
 
 class TaskCreate(LoginRequiredMixin, CreateView):
   model = Task
-  fields = '__all__'
+  fields = ['title', 'assignee', 'description', 'due_date', 'priority']
 
+  def form_valid(self, form):
+    form.instance.project_id = self.kwargs['project_id']
+    return super().form_valid(form)
+    
+
+
+class TaskUpdate(LoginRequiredMixin, UpdateView):
+  model = Task
+  fields = ['title', 'assignee', 'description', 'due_date', 'priority']
+
+class TaskDelete(LoginRequiredMixin, DeleteView):
+  model = Task
+  success_url = '/projects/<int:project_id>/'
 
 def home(request):
     return render(request, 'home.html')
