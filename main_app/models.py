@@ -14,8 +14,8 @@ class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     completion = models.BooleanField(default=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    # members = models.ManyToManyField(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='main_user')
+    members = models.ManyToManyField(User, related_name='project_members')
     
     def __str__(self):
         return f'({self.title} {self.id})'
