@@ -50,8 +50,10 @@ def home(request):
 @login_required
 def projects_index(request):
   projects = Project.objects.filter(user=request.user)
+  # assoc_projects = Project.objects.filter(members=request.user)
   return render(request, 'projects/index.html', {
     'projects': projects
+    # 'assoc_projects' : assoc_projects
   })
 
 @login_required

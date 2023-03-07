@@ -3,6 +3,12 @@
 
 <h1 class="text-center">{{ project.title }} Project Details</h1>
 
+<form class="d-flex justify-content-center h-100" action="" method="GET">
+  <input class="form-control me-2" type="text" name="username" placeholder="Search by username">
+  <button class="btn btn-primary" id="search-button" type="submit">
+    <i class="search">Search</i>
+  </button>
+</form>
 <div class="container" id="project-container">
   <div class="row">
     <div class="col-4 mt-3">
@@ -16,10 +22,12 @@
             <p>In Progress</p>
           {% endif %}
         </div>
+
         <div class="card-action">
           <a href="{% url 'projects_update' project.id %}" class="btn btn-primary">Edit</a> 
           <a href="{% url 'projects_delete' project.id %}" class="btn btn-primary">Delete</a> 
         </div>
+
       </div>
     </div>
     <div class="col-4 mt-3">
@@ -31,7 +39,7 @@
           <!-- <a href="{% url 'tasks_create' project.id %}" class="btn btn-primary">Add Task</a> -->
         <div class="card">
           {% for task in project.task_set.all %}
-             <a href="{% url 'tasks_detail' project.id task.id %}"><div class="card-header pb-0">{{ task.title }}</div></a>
+              <div class="card-header pb-0">{{ task.title }}</div>
               <div class="card-body pb-0 pt-2 mb-0">
                 <p>{{ task.description }}</p>
               </div>
