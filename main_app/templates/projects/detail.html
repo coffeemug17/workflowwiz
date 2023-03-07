@@ -1,40 +1,58 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Project Details</h1>
+<h1 class="text-center">{{ project.title }} Project Details</h1>
 
-<div class="row">
-  <div class="col s6">
-    <div class="card">
-      <div class="card-content">
-        <span class="card-title">{{ project.title }}</span>
-        <p>Description: {{ project.description|linebreaks }}</p>
-        {% if project.completion %}
-        <p>Completed</p>
-        {% else %}
-          <p>In Progress</p>
-        {% endif %}
+<div class="container" id="project-container">
+  <div class="row">
+    <div class="col-4 mt-3">
+      <div class="card" id="project-detail-card">
+        <div class="card-content">
+          <span class="card-title mb-2">{{ project.title }}</span>
+          <p class="mb-0">Description: {{ project.description|linebreaks }}</p>
+          {% if project.completion %}
+            <p>Completed</p>
+          {% else %}
+            <p>In Progress</p>
+          {% endif %}
+        </div>
+        <div class="card-action">
+          <a href="{% url 'projects_update' project.id %}" class="btn btn-primary">Edit</a> 
+          <a href="{% url 'projects_delete' project.id %}" class="btn btn-primary">Delete</a> 
+        </div>
       </div>
-      <div class="card-action">
-        <a href="{% url 'projects_update' project.id %}">Edit</a>
-        <a href="{% url 'projects_delete' project.id %}">Delete</a>
+    </div>
+    <div class="col-4 mt-3">
+      <div class="card">
+        <form class="text-center mb-2 mt-1" action="{% url 'tasks_create' project.id %}" method="POST">
+          <button type="submit" class="btn btn-primary"> Add Task </button>
+          {% csrf_token %}
+        </form>
+          <!-- <a href="{% url 'tasks_create' project.id %}" class="btn btn-primary">Add Task</a> -->
+        <div class="card">
+          {% for task in project.task_set.all %}
+              <div class="card-header pb-0">{{ task.title }}</div>
+              <div class="card-body pb-0 pt-2 mb-0">
+                <p>{{ task.description }}</p>
+              </div>
+          {% empty %}
+            <div class="card-panel teal-text center-align">No Tasks Yet</div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="col-4 mt-3">
+      <div class="card">
+          <div class="card-content">
+            <span class="card-title"></span>
+            <h3 class="text-center">Comment Section</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ex incidunt id saepe eum, omnis aut officia? Nihil, cupiditate! Fugiat officiis error labore molestiae adipisci cupiditate voluptatem facilis animi aspernatur?</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col s6">
-    <form action="{% url 'tasks_create' project.id %}" method="POST">
-      {% csrf_token %}
-      <!-- Render the inputs -->
-      <input type="submit" class="btn" value="Add Task">
-    </form>
-    <br>
-    {% for task in project.task_set.all %}
-        <div>{{ task.title }}</div>
-        <div>{{ task.description }}</div>
-    {% empty %}
-      <div class="card-panel teal-text center-align">No Tasks Yet</div>
-    {% endfor %}
-  </div>
+</div>
 
 
 {% endblock %}
