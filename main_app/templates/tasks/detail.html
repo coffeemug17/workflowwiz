@@ -1,0 +1,10 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+
+<h1>THIS IS A TASK</h1>
+
+<a href="{% url 'tasks_update' project.id task.id %}">EDIT</a>
+<a href="{% url 'detail' project.id %}">BACK</a>
+<a href="{% url 'tasks_delete' project.id task.id %}">DELETE</a>
+{% endblock %}

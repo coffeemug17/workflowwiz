@@ -3,7 +3,6 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Project, Task
@@ -43,7 +42,7 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
   model = Task
-  success_url = '/projects/<int:project_id>/'
+  success_url = '/projects/<int:project_id>/<int:pk>/' 
 
 def home(request):
     return render(request, 'home.html')
@@ -62,6 +61,15 @@ def projects_detail(request, project_id):
   return render(request, 'projects/detail.html', {
     'project': project,
     'tasks' : tasks
+  })
+
+@login_required
+def tasks_detail(request, project_id, task_id):
+  project = Project.objects.get(id=project_id)
+  task = Task.objects.get(id=task_id)
+  return render(request, 'tasks/detail.html', {
+    'project': project,
+    'task' : task
   })
 
 
