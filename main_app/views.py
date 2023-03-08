@@ -81,6 +81,13 @@ def tasks_detail(request, project_id, task_id):
     'task' : task
   })
 
+def assoc_member(request, project_id, member_id):
+  Project.objects.get(id=project_id).members.add(member_id)
+  return redirect('detail', project_id=project_id)
+
+def unassoc_member(request, project_id, member_id):
+  Project.objects.get(id=project_id).members.remove(member_id)
+  return redirect('detail', project_id=project_id)
 
 
 def signup(request):
