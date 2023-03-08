@@ -26,6 +26,8 @@ body {
 .ww {
     font-family: 'Poiret One', cursive;
     font-size: 30px;
+    color: black;
+    margin-top: -1px;
 }
 
 main {
@@ -51,6 +53,9 @@ main {
     border: none;
 }
 
+#home-content {
+    margin-top: 16vmin;
+}
 
 /* accent colors 
 #ee6c4d orange

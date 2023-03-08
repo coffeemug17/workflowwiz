@@ -13,8 +13,11 @@
             </div>
         </div>
         {% empty %}
-        
-        <h1>no projects yet</h1>
+        <div class="card">
+            <h1>No projects yet, <br> would you like to get started?
+                <a class="btn btn-primary" href="{% url 'projects_create' %}">Create A Project</a>
+            </h1>
+        </div>
         
         {% endfor %}
     </div>

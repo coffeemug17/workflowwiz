@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1> Workflow Wiz Home Page</h1>
+    <div class="row">
+        <div class="col-md m" id="home-content">
+            <h1> Welcome to Workflow Wiz</h1>
+            <h4 class="mt-3">You can manage your project's and teammates all in one location!
+                <img src="static/images/wand.png" alt="">
+            </h4>
+            <a class="btn btn-primary" href="{% url 'signup' %}">Sign Up Now!</a>
+        </div>
+        <div class="col-md">
+            Insert Example Pages here 
+        </div>
+    </div>
 
 {% endblock %}
