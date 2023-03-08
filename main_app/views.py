@@ -29,7 +29,7 @@ class ProjectDelete(LoginRequiredMixin, DeleteView):
 
 class TaskCreate(LoginRequiredMixin, CreateView):
   model = Task
-  fields = ['title', 'assignee', 'description', 'due_date', 'priority']
+  fields = ['title', 'assignee', 'description', 'due_date', 'priority', 'completion']
 
   def form_valid(self, form):
     form.instance.project_id = self.kwargs['project_id']
@@ -39,7 +39,7 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
   model = Task
-  fields = ['title', 'assignee', 'description', 'due_date', 'priority']
+  fields = ['title', 'assignee', 'description', 'due_date', 'priority', 'completion']
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
   model = Task

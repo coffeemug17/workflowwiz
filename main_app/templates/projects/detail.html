@@ -11,7 +11,7 @@
 </form>
 <div class="container" id="project-container">
   <div class="row">
-    <div class="col-4 mt-3">
+    <div class="col-4 mt-3 mb-3">
       <div class="card" id="project-detail-card">
         <div class="card-content">
           <span class="card-title mb-2">{{ project.title }}</span>
@@ -30,7 +30,7 @@
 
       </div>
     </div>
-    <div class="col-4 mt-3">
+    <div class="col-4 mt-3 mb-3">
       <div class="card">
         <form class="text-center mb-2 mt-1" action="{% url 'tasks_create' project.id %}" method="POST">
           <button type="submit" class="btn btn-primary"> Add Task </button>
@@ -42,6 +42,14 @@
               <a href="{% url 'tasks_detail' project.id task.id %}"><div class="card-header pb-0">{{ task.title }}</div></a>
               <div class="card-body pb-0 pt-2 mb-0">
                 <p>{{ task.description }}</p>
+                {% if task.completion == True %}
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" value="True" checked>
+                  <label class="form-check-label" for="inlineCheckbox1">Completed</label>
+                </div>
+                {% else %}
+                  <p>Still Working...</p>
+                {% endif %}
               </div>
           {% empty %}
             <div class="card-panel teal-text center-align">No Tasks Yet</div>
@@ -49,7 +57,7 @@
         </div>
       </div>
     </div>
-    <div class="col-4 mt-3">
+    <div class="col-4 mt-3 mb-3">
       <div class="card">
           <div class="card-content">
             <span class="card-title"></span>
