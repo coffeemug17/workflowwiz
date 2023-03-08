@@ -39,7 +39,7 @@
           <!-- <a href="{% url 'tasks_create' project.id %}" class="btn btn-primary">Add Task</a> -->
         <div class="card">
           {% for task in project.task_set.all %}
-              <div class="card-header pb-0">{{ task.title }}</div>
+              <a href="{% url 'tasks_detail' project.id task.id %}"><div class="card-header pb-0">{{ task.title }}</div></a>
               <div class="card-body pb-0 pt-2 mb-0">
                 <p>{{ task.description }}</p>
               </div>
