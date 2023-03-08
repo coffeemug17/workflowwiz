@@ -11,7 +11,7 @@ from .models import Project, Task, User
 # Create your views here.
 class ProjectCreate(LoginRequiredMixin, CreateView):
   model = Project
-  fields = ['title', 'description', 'members']
+  fields = ['title', 'description']
 
   def form_valid(self, form):
     form.instance.user = self.request.user
@@ -69,7 +69,7 @@ def projects_detail(request, project_id):
   project = Project.objects.get(id=project_id)
   tasks = project.task_set.all()
   id_list = project.members.all().values_list('id')
-  members_not_assoc = User.objects.exclude(id__in=id_list)
+  members_not_assoc = User.objects.exclude(id__in=id_list).exclude(id=project.user.id)
   return render(request, 'projects/detail.html', {
     'project': project,
     'tasks' : tasks,
