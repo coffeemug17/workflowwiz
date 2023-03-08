@@ -75,7 +75,7 @@
               <tbody>
                 {% for comment in project.comment_set.all %}
                   <tr>
-                    <td>{{comment.name}}</td>
+                    <td>{{comment.user.username}}</td>
                     <td>{{comment.comment}}</td>
                   </tr>
                 {% endfor %}
