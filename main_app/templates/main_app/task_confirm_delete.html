@@ -8,6 +8,7 @@
   <form action="" method="POST">
     {% csrf_token %}
     <input type="submit" value="Yes - Delete!" class="btn">
+    <a href="{% url 'detail' object.project.id %}">Cancel</a>
    <h5>Want to go back? Press back on your browser. SORRY!</h5>
 
   </form>

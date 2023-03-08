@@ -43,11 +43,12 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
   model = Task
+  # success_url = '/projects'
   def get_success_url(self):
       return reverse(
           'detail',
           kwargs={
-              'project_id': self.object.project_id
+              'project_id': self.object.project.id,
           }
       )
 
