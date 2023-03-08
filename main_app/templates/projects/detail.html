@@ -70,5 +70,32 @@
   </div>
 </div>
 
+<div>
+  <!-- Available Members will come after this line -->
+  <div class="col s6">
+    <h3>Available Members</h3>
+    {% if members.count %}
+      {% for member in members.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              {{ member }}
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'assoc_member' project.id member.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn">Add</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>{{project.title}} Already Has All members Available</h5>
+    {% endif %}
+  </div>
+</div>
+  
+
 
 {% endblock %}

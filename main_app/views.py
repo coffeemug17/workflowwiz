@@ -6,12 +6,12 @@ from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Project, Task
+from .models import Project, Task, User
 
 # Create your views here.
 class ProjectCreate(LoginRequiredMixin, CreateView):
   model = Project
-  fields = '__all__'
+  fields = ['title', 'description', 'members']
 
   def form_valid(self, form):
     form.instance.user = self.request.user
@@ -57,19 +57,22 @@ def home(request):
 @login_required
 def projects_index(request):
   projects = Project.objects.filter(user=request.user)
-  # assoc_projects = Project.objects.filter(members=request.user)
+  assoc_projects = Project.objects.filter(members=request.user)
   return render(request, 'projects/index.html', {
-    'projects': projects
-    # 'assoc_projects' : assoc_projects
+    'projects': projects,
+    'assoc_projects' : assoc_projects
   })
 
 @login_required
 def projects_detail(request, project_id):
   project = Project.objects.get(id=project_id)
   tasks = project.task_set.all()
+  id_list = project.members.all().values_list('id')
+  members_not_assoc = User.objects.exclude(id__in=id_list)
   return render(request, 'projects/detail.html', {
     'project': project,
-    'tasks' : tasks
+    'tasks' : tasks,
+    'members': members_not_assoc
   })
 
 @login_required
@@ -88,7 +91,6 @@ def assoc_member(request, project_id, member_id):
 def unassoc_member(request, project_id, member_id):
   Project.objects.get(id=project_id).members.remove(member_id)
   return redirect('detail', project_id=project_id)
-
 
 def signup(request):
   error_message = ''
