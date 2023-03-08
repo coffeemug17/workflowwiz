@@ -47,6 +47,15 @@ class Task(models.Model):
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'project_id': self.project_id}) 
+    
+class Comment(models.Model):
+    name = models.CharField(max_length=100)
+    comment = models.TextField(max_length=250)
 
+    project = models.ForeignKey( Project, on_delete=models.CASCADE)
 
+    # def __str__(self):
+    #     return f"{self.()} on {self.date}"
 
+    class Meta:
+        ordering = ['id']

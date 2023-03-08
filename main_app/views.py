@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Project, Task, User
+from .forms import CommentForm  
 
 # Create your views here.
 class ProjectCreate(LoginRequiredMixin, CreateView):
@@ -25,6 +26,15 @@ class ProjectUpdate(LoginRequiredMixin, UpdateView):
 class ProjectDelete(LoginRequiredMixin, DeleteView):
   model = Project
   success_url = '/projects'
+
+@login_required
+def add_comment(request, project_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.project_id = project_id
+    new_comment.save()
+  return redirect('detail', project_id=project_id)
 
 
 class TaskCreate(LoginRequiredMixin, CreateView):
@@ -70,10 +80,12 @@ def projects_detail(request, project_id):
   tasks = project.task_set.all()
   id_list = project.members.all().values_list('id')
   members_not_assoc = User.objects.exclude(id__in=id_list).exclude(id=project.user.id)
+  comment_form = CommentForm()
   return render(request, 'projects/detail.html', {
     'project': project,
     'tasks' : tasks,
-    'members': members_not_assoc
+    'members': members_not_assoc,
+    'comment_form' : comment_form
   })
 
 @login_required
