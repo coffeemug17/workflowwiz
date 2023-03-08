@@ -33,6 +33,7 @@ def add_comment(request, project_id):
   if form.is_valid():
     new_comment = form.save(commit=False)
     new_comment.project_id = project_id
+    new_comment.user = request.user
     new_comment.save()
   return redirect('detail', project_id=project_id)
 

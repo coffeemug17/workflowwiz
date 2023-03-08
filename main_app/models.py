@@ -49,9 +49,9 @@ class Task(models.Model):
         return reverse('detail', kwargs={'project_id': self.project_id}) 
     
 class Comment(models.Model):
-    name = models.CharField(max_length=100)
+    # name = models.CharField(max_length=100)
     comment = models.TextField(max_length=250)
-
+    user = models.ForeignKey( User, on_delete=models.CASCADE)
     project = models.ForeignKey( Project, on_delete=models.CASCADE)
 
     # def __str__(self):
