@@ -11,7 +11,9 @@ body {
     margin-left: 2vmin;
     margin-right: 2vmin;
     margin-top: 2vmin;
+    margin-bottom: 4vmin;
     border-radius: 15px;
+
 }
 
 .navlink {
@@ -34,9 +36,25 @@ main {
     font-family: 'Comfortaa', cursive;
 }
 
+#home-img {
+    margin-top: 3vmin;
+    max-width: 100%;
+    overflow: hidden;
+    box-shadow: 12px 12px 1px 8px #293241;
+}
+
+#home-img img {
+    width: 100%;
+    height: auto;
+    box-shadow: 2px #293241;
+    position: relative;
+    z-index: 1;
+}
+
 #project-container {
     background-color: #293241;
     border-radius: 1vmin;
+    margin-top: 4vmin;
 }
 
 .card {
@@ -55,6 +73,20 @@ main {
 
 #home-content {
     margin-top: 16vmin;
+}
+
+#comments {
+    margin-bottom: 0px;
+}
+
+#userc {
+    text-decoration: underline;
+}
+
+#members {
+    margin-left: 1vmin;
+    margin-right: 1vmin;
+    border: solid #ee6c4d;
 }
 
 /* accent colors 

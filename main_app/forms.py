@@ -9,7 +9,10 @@ class CommentForm(ModelForm):
   class Meta:
     model = Comment
     fields = ['comment']
-    
+    widgets = {
+            'comment': forms.Textarea(attrs={'style':'width: 100%; height: 50px; border: solid 1px #ee6c4d'})
+        }
+
 
 class TaskForm(ModelForm):
 
