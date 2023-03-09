@@ -41,7 +41,7 @@
           {% for task in project.task_set.all %}
               <a href="{% url 'tasks_detail' project.id task.id %}"><div class="card-header pb-0">{{ task.title }}</div></a>
               <div class="card-body pb-0 pt-2 mb-0">
-                <p>{{ task.description }}</p>
+                <p>{{ task.assignee }}</p>
                 {% if task.completion == True %}
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" value="True" checked>

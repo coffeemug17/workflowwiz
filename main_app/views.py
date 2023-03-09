@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Project, Task, User
-from .forms import CommentForm  
+from .forms import CommentForm, TaskForm
 
 # Create your views here.
 class ProjectCreate(LoginRequiredMixin, CreateView):
@@ -40,7 +40,7 @@ def add_comment(request, project_id):
 
 class TaskCreate(LoginRequiredMixin, CreateView):
   model = Task
-  fields = ['title', 'assignee', 'description', 'due_date', 'priority', 'completion']
+  form_class = TaskForm
 
   def form_valid(self, form):
     form.instance.project_id = self.kwargs['project_id']
