@@ -15,6 +15,9 @@ Key features of the application include the ability for users to create projects
 Overall, Workflow Wiz provides a simple and intuitive interface for managing personal projects and associated tasks, making it an ideal tool for anyone looking to stay organized and productive.
 </div>
 
+## :camera_flash: Screenshots 
+
+
 ## :computer: Technologies Used
 
 
@@ -34,13 +37,20 @@ Overall, Workflow Wiz provides a simple and intuitive interface for managing per
 
 <details open>
   <summary> How to Create a Project </summary>
-    1. Sign up or log in to your account.
-    2. Navigate to "Create A Project" page using the navigation bar.
-    3. Enter a title and description for your project, then hit submit to create the project, which will be saved in "My Projects" section of your account.
+  <ul>
+    <li>Sign up or log in to your account.</li>
+    <li>Navigate to "Create A Project" page using the navigation bar.</li>
+    <li>Enter a title and description for your project, then hit submit to create the project, which will be saved in "My Projects" section of your account.</li>
+  </ul>
 </details>
 
 <details>
   <summary> How to Add a Task to a Project </summary>
+  <ul>
+    <li>Navigate to "My Projects" using the navigation bar and then click on "View Project".</li>
+    <li>Click on Add Task button to view the form which prompts you to enter the required details.</li>
+    <li>Enter a title,description, assignee, due date and priority type for that task, then hit submit to create the task, which will be saved in "View Project" section of your Project.</li>
+  </ul>
     
 </details>
 
@@ -63,3 +73,5 @@ Overall, Workflow Wiz provides a simple and intuitive interface for managing per
 - [:star:] Follow other users signed up on the app
 
 - [:star:] Communicate with project members through an external chat API
+
+- [:star:] Sort tasks by their priority
