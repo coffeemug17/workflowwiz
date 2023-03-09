@@ -2,7 +2,29 @@
 
 {% block content %}
 
-<h1>THIS IS A TASK</h1>
+{% for task in project.task_set.all %}
+<h1>{{ task.title }}</h1>
+<div class="card col-4">
+    <div class="card-header">{{ task.title }}</div>
+        <div class="card-body pb-0 pt-2 mb-0">
+          <p>Description: {{ task.description }}</p>
+        </div>
+        <div>
+            Priority: {{ task.get_priority_display }}
+        </div>
+        <div>
+            Due Date: {{ task.due_date }}
+        </div>
+        {% if task.completion == True %}
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" value="True" checked>
+          <label class="form-check-label" for="inlineCheckbox1">Completed</label>
+        </div>
+        {% else %}
+          <p>Still Working...</p>
+        {% endif %}
+    {% endfor %}
+  </div>
 
 <a href="{% url 'tasks_update' project.id task.id %}">EDIT</a>
 <a href="{% url 'detail' project.id %}">BACK</a>
