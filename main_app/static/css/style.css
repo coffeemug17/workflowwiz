@@ -72,6 +72,16 @@ main {
     border-radius: 1vmin;
 }
 
+#project-buttons {
+    display: flex;
+    justify-content: end;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#edit-project {
+    margin-right: 1vmin;
+}
 
 .btn {
     background-color: #ee6c4d;
@@ -86,8 +96,13 @@ main {
     margin-bottom: 0px;
 }
 
+#add-comment {
+    margin-left: 0.5vmin;
+    margin-top: -18px;
+}
+
 #userc {
-    text-decoration: underline;
+   text-decoration: underline; 
 }
 
 #members {
@@ -96,6 +111,18 @@ main {
     border: solid #ee6c4d;
 }
 
+#completed {
+    margin-left: 2vmin;
+}
+
+#middle-button {
+    margin-right: 1vmin;
+    margin-left: 1vmin;
+}
+
+#task-title {
+    text-decoration: none;
+}
 /* accent colors 
 #ee6c4d orange
 #293241 navy

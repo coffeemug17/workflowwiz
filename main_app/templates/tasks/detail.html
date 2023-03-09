@@ -2,31 +2,32 @@
 
 {% block content %}
 
-{% for task in project.task_set.all %}
-<h1>{{ task.title }}</h1>
-<div class="card col-4">
+<h1 class="text-center">{{ task.title }}</h1>
+<div class="card justify-content-center">
+<div>
     <div class="card-header">{{ task.title }}</div>
         <div class="card-body pb-0 pt-2 mb-0">
           <p>Description: {{ task.description }}</p>
         </div>
-        <div>
+        <div class="card-body pb-0 pt-2 mb-0">
             Priority: {{ task.get_priority_display }}
         </div>
-        <div>
+        <div class="card-body pb-0 pt-2 mb-0">
             Due Date: {{ task.due_date }}
         </div>
         {% if task.completion == True %}
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" value="True" checked>
+        <div class="form-check pt-2" id="completed">
+          <input class="form-check-input pl-2" type="checkbox" value="True" checked>
           <label class="form-check-label" for="inlineCheckbox1">Completed</label>
         </div>
         {% else %}
           <p>Still Working...</p>
-        {% endif %}
-    {% endfor %}
+        {% endif %} 
   </div>
-
-<a href="{% url 'tasks_update' project.id task.id %}">EDIT</a>
-<a href="{% url 'detail' project.id %}">BACK</a>
-<a href="{% url 'tasks_delete' project.id task.id %}">DELETE</a>
+  </div>
+<div class="d-flex flex-row-reverse mt-2">
+  <a class="btn btn-primary" href="{% url 'tasks_update' project.id task.id %}">EDIT</a>
+  <a class="btn btn-primary" id="middle-button" href="{% url 'detail' project.id %}">BACK</a>
+  <a class="btn btn-primary" href="{% url 'tasks_delete' project.id task.id %}">DELETE</a>
+</div>
 {% endblock %}
