@@ -18,9 +18,11 @@
                 <a class="btn btn-primary" href="{% url 'projects_create' %}">Create A Project</a>
             </h1>
         </div>
-        
         {% endfor %}
     </div>
+</div>
+<h1 class="text-center mb-3">Associated Projects</h1>
+<div class="container" id="project-index2"> 
     <div class="row">
         {% for project in assoc_projects %}
         <div class="col-sm-4 mb-3 mt-3">
@@ -30,7 +32,6 @@
                 <a href="{% url 'detail' project.id %}" class="btn btn-primary">View Project</a>
             </div>
         </div>
-        
         {% endfor %}
     </div>
 </div>
