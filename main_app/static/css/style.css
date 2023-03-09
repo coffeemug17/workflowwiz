@@ -64,7 +64,14 @@ main {
 #project-index {
     background-color: #293241;
     border-radius: 1vmin;
+    margin-bottom: 2vmin;
 }
+
+#project-index2 {
+    background-color: #293241;
+    border-radius: 1vmin;
+}
+
 
 .btn {
     background-color: #ee6c4d;
