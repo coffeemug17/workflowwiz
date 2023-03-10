@@ -17,6 +17,12 @@ Overall, Workflow Wiz provides a simple and intuitive interface for managing per
 
 ## :camera_flash: Screenshots 
 
+| Description | Screenshot |
+| --------------- | --------------- |
+| Home Page  | <img src="https://i.imgur.com/EZseypI.png">  |
+| My Projects  | <img src="https://i.imgur.com/EB2Ncki.png"> |
+| Project Details  | <img src="https://i.imgur.com/orYhIo1.png">  |
+| Task Details  | <img src="https://i.imgur.com/rOd40RH.png">  |
 
 ## :computer: Technologies Used
 
