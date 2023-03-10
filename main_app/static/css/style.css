@@ -72,6 +72,10 @@ main {
     border-radius: 1vmin;
 }
 
+#project-title {
+    font-size: 30px;
+}
+
 #project-buttons {
     display: flex;
     justify-content: end;
@@ -92,17 +96,31 @@ main {
     margin-top: 16vmin;
 }
 
+.comment-container {
+    height: 200px; 
+    overflow-y: scroll;
+    margin-left: 0.4vmin;
+}
+
 #comments {
     margin-bottom: 0px;
+}
+
+.comment-head {
+    margin-left: 0.5vmin;
 }
 
 #add-comment {
     margin-left: 0.5vmin;
     margin-top: -18px;
+    height: 150x;
+    width: 120px;
 }
 
 #userc {
    text-decoration: underline; 
+   background-color: rgb(213, 232, 234);
+   border-radius: 8px;
 }
 
 #members {

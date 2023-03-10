@@ -8,19 +8,20 @@
     <div class="col-4 mt-3 mb-3">
       <div class="card" id="project-detail-card">
         <div class="card-content">
-          <span class="card-title mb-2">{{ project.title }}</span>
-          <p class="mb-0">Description: {{ project.description|linebreaks }}</p>
+          <span class="card-title" id="project-title">{{ project.title }}</span>
+          <p class="mt-1">{{ project.description|linebreaks }}</p>
           {% if project.completion %}
             <p>Completed</p>
           {% else %}
             <p>In Progress</p>
           {% endif %}
         </div>
-
+        {% if project.main_user %}
         <div class="card-action" id="project-buttons">
           <a href="{% url 'projects_update' project.id %}" class="btn btn-primary" id="edit-project">Edit</a> 
           <a href="{% url 'projects_delete' project.id %}" class="btn btn-primary">Delete</a> 
         </div>
+        {% endif %}
 
       </div>
     </div>
@@ -34,8 +35,11 @@
         <div class="card">
           {% for task in project.task_set.all %}
               <a href="{% url 'tasks_detail' project.id task.id %}" id="task-title" style=>
-                <div class="card-header pb-0"><strong>{{ task.title }}</strong></div>
-              </a>
+                <div class="card-header pb-0 d-flex justify-content-between">{{ task.title }}</a>
+                  {% if task.completion == False %}
+                  In Progress
+                  {% endif %}
+                </div>
               <div class="card-body pb-0 pt-2 mb-0">
                 <p>Assigned to: {{ task.assignee }}</p>
                 {% if task.completion == True %}
@@ -43,8 +47,6 @@
                   <input class="form-check-input" type="checkbox" value="True" checked>
                   <label class="form-check-label" for="inlineCheckbox1">Completed</label>
                 </div>
-                {% else %}
-                  <p>Still Working...</p>
                 {% endif %}
               </div>
           {% empty %}
@@ -61,16 +63,19 @@
             </span>
             <form action="{% url 'add_comment' project.id %}" method="POST">
               {% csrf_token %}
-              {{ comment_form.as_p }}
+              <div class="comment-head">
+                {{ comment_form.as_p }}
+              </div>
               <input type="submit" class="btn btn-primary btn-sm" value="Add Comment" id="add-comment">
             </form>
-            <br>
+            <div class="comment-container">
                 {% for comment in project.comment_set.all %}
                   <p id="comments">
                     <h5 id="userc">{{comment.user.username}} :</h5>
                     {{comment.comment}}
                   </p>
                 {% endfor %}
+              </div>
           </div>
         </div>
       </div>
@@ -92,7 +97,7 @@
       <div class="card-action mb-1">
         <form action="{% url 'assoc_member' project.id member.id %}" method="POST">
           {% csrf_token %}
-          <button type="submit" class="btn btn-primary btn-sm">Add</button>
+          <button type="submit" class="btn btn-primary btn-sm" id="add-members">Add</button>
         </form>
       </div>
     </div>
