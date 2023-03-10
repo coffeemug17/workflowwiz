@@ -21,10 +21,10 @@
         {% endfor %}
     </div>
 </div>
+{% for project in assoc_projects %}
 <h1 class="text-center mb-3">Associated Projects</h1>
 <div class="container" id="project-index2"> 
     <div class="row">
-        {% for project in assoc_projects %}
         <div class="col-sm-4 mb-3 mt-3">
             <div class="card">
                 <h3 class="card-title text-center">{{ project.title }}</h3>
