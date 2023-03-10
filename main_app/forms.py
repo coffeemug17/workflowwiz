@@ -20,7 +20,7 @@ class TaskForm(ModelForm):
 
     class Meta:
         model = Task
-        fields = ['title', 'assignee', 'description', 'due_date', 'priority']
+        fields = ['title', 'assignee', 'description', 'due_date', 'priority', 'completion']
         widgets = {
             'title': TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter task title'}),
             'assignee': TextInput(attrs={'class': 'form-control', 'placeholder': 'Assignee'}),

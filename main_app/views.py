@@ -7,11 +7,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Project, Task, User
-from .forms import CommentForm, TaskForm
+from .forms import CommentForm, TaskForm, ProjectForm
 
 class ProjectCreate(LoginRequiredMixin, CreateView):
   model = Project
-  fields = ['title', 'description']
+  form_class = ProjectForm
 
   def form_valid(self, form):
     form.instance.user = self.request.user
@@ -19,7 +19,7 @@ class ProjectCreate(LoginRequiredMixin, CreateView):
 
 class ProjectUpdate(LoginRequiredMixin, UpdateView):
   model = Project
-  fields = ['title', 'description', 'completion']
+  form_class = ProjectForm
 
 
 class ProjectDelete(LoginRequiredMixin, DeleteView):
@@ -49,7 +49,7 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
   model = Task
-  fields = ['title', 'assignee', 'description', 'due_date', 'priority', 'completion']
+  form_class = TaskForm
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
   model = Task
