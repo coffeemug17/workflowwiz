@@ -26,7 +26,6 @@ class TaskForm(ModelForm):
             'assignee': TextInput(attrs={'class': 'form-control', 'placeholder': 'Assignee'}),
             'description': Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter task description'}),
             'due_date': DateInput(attrs={'class': 'form-control'}),
-            'priority': TextInput(attrs={'class': 'form-control', 'placeholder': 'Priority'}),
         }
 
 class ProjectForm(ModelForm):
