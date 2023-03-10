@@ -1,7 +1,6 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
-# Import the User
 from django.contrib.auth.models import User
 
 PRIORITIES = (
@@ -26,7 +25,6 @@ class Project(models.Model):
 
 class Task(models.Model):
     title = models.CharField(max_length=100)
-    # later turn into drop down off assigned users
     assignee = models.CharField(max_length=50)
     description = models.TextField(max_length=250)
     due_date = models.DateField('Due Date')
@@ -49,13 +47,10 @@ class Task(models.Model):
         return reverse('detail', kwargs={'project_id': self.project_id}) 
     
 class Comment(models.Model):
-    # name = models.CharField(max_length=100)
     comment = models.TextField(max_length=250)
     user = models.ForeignKey( User, on_delete=models.CASCADE)
     project = models.ForeignKey( Project, on_delete=models.CASCADE)
 
-    # def __str__(self):
-    #     return f"{self.()} on {self.date}"
 
     class Meta:
         ordering = ['id']

@@ -21,8 +21,9 @@
         {% endfor %}
     </div>
 </div>
-{% for project in assoc_projects %}
+
 <h1 class="text-center mb-3">Associated Projects</h1>
+{% for project in assoc_projects %}
 <div class="container" id="project-index2"> 
     <div class="row">
         <div class="col-sm-4 mb-3 mt-3">
@@ -31,6 +32,10 @@
                 <p class="card-text">Description: {{ project.description }}</p>
                 <a href="{% url 'detail' project.id %}" class="btn btn-primary">View Project</a>
             </div>
+        </div>
+        {% empty %}
+        <div class="card">
+            <h1>You have not been added to any projects.</h1>
         </div>
         {% endfor %}
     </div>
