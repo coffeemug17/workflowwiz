@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 import environ
+import dj_database_url
 
 environ.Env()
 environ.Env.read_env()
@@ -80,14 +81,7 @@ WSGI_APPLICATION = 'workflowwiz.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'trevorjakecampbell/workflowwiz',
-        'USER': os.environ['DB_USER'],
-        'PASSWORD': os.environ['DB_PW'],
-        'HOST': 'db.bit.io',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(default=os.environ['DATABASE_URL'], engine='django_cockroachdb')
 }
 
 
