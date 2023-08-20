@@ -13,9 +13,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 import environ
-# Configure Django App for Heroku.
-import django_on_heroku
-django_on_heroku.settings(locals(), databases=False)
 import dj_database_url
 
 environ.Env()
