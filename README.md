@@ -2,8 +2,6 @@
 
 # Workflow Wiz
 
-### [CLICK TO DEMO](https://workflowwiz.herokuapp.com/)
-
 
 
 ## :pencil: Description
